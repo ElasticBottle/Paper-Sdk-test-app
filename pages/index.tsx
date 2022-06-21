@@ -1,24 +1,13 @@
-import {
-  CreateWallet,
-  LoginWithPaper,
-  PaperCheckout,
-  PaperCheckoutDisplay,
-  PaperSDKError,
-  PaperUser,
-  PaymentSuccessResult,
-  PayWithCard,
-  TransferSuccessResult,
-} from "@paperxyz/react-client-sdk";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { FaTwitterSquare } from "react-icons/fa";
 import { HiOutlineGlobeAlt } from "react-icons/hi";
 import { IoLogoDiscord } from "react-icons/io5";
+import { PaperLogo } from "../components/PaperLogo";
+import { PayWithCardExample } from "../components/PayWithCardExample";
 import NFTPreview from "../public/android-chrome-256x256.png";
-import Logo from "../public/icons/paper-logo-icon.svg";
-import LogoText from "../public/icons/paper-text-light.svg";
 
 const Home: NextPage = () => {
   return (
@@ -54,58 +43,14 @@ const Home: NextPage = () => {
 
 export default Home;
 
-function PaperLogo() {
-  return (
-    <div className="flex">
-      <div className="pr-1">
-        <Image src={Logo} alt="Paper icon" />
-      </div>
-      <Image src={LogoText} alt="Paper logo" />
-    </div>
-  );
-}
-
 function MintComponent() {
-  const [Time, setTime] = useState("second");
-  const onSuccessLogin = async (code: string) => {
-    const resp = await fetch("/api/get-user-token", {
-      method: "POST",
-      body: JSON.stringify({
-        code,
-      }),
-    });
-    if (resp.status !== 200) {
-      console.log("resp", resp);
-      throw new Error("Failed to get user token");
-    }
-    const { userToken } = await resp.json();
-    console.log("userToken", userToken);
-  };
-  const onClick = async () => {
-    const resp = await fetch("/api/get-user-token", {
-      method: "POST",
-    });
-    if (resp.status !== 200) {
-      console.log("resp", resp);
-      throw new Error("Failed to get user token");
-    }
-    const { home } = await resp.json();
-    console.log("home", home);
-  };
-
   return (
     <div className="flex flex-col items-center order-1 pb-4 space-y-5 md:order-2">
-      <div className="items-center overflow-hidden aspect-square w-52 rounded-xl">
+      <div className="items-center aspect-square w-52 rounded-xl">
         <Image src={NFTPreview} alt="NFT preview" layout="responsive" />
       </div>
-      <button className="bg-blue-500 border-2" onClick={onClick}>
-        try
-      </button>
-      <LoginWithPaper
-        className="justify-center w-full"
-        onSuccess={onSuccessLogin}
-      />
-      <PayWithCardWithCreateWalletExample />
+
+      <PayWithCardExample />
     </div>
   );
 }
@@ -154,94 +99,7 @@ function InfoComponent() {
         </a>
         !
       </p>
-      <PaperCheckoutTest />
+      {/* <PaperCheckoutTest /> */}
     </div>
-  );
-}
-
-function PayWithCardWithCreateWalletExample() {
-  const [emailAddress, setEmailAddress] = useState<string>("");
-  const [walletAddress, setWalletAddress] = useState<string>("");
-  const [paperCheckoutId, setPaperCheckoutId] = useState<string>("");
-  const [message, setMessage] = useState<string>("");
-  const [showPayWithCard, setShowPayWithCard] = useState<boolean>(false);
-
-  useEffect(() => {
-    (async () => {
-      // Fetch the Paper checkout ID from your backend
-      // const checkoutFetch = await fetch("/api/paper/checkout", {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify({
-      //     // Potentially some params you want to pass to tell
-      //     // your backend which Paper checkout you want to get.
-      //   }),
-      // });
-      // const { checkoutId } = await checkoutFetch.json();
-      // setPaperCheckoutId(checkoutId);
-    })();
-  }, []);
-
-  const onPayWithCardTransferSuccess = (result: TransferSuccessResult) => {
-    setMessage(`Transaction succeeded!`);
-  };
-
-  const onPayWithCardError = (error: PaperSDKError) => {
-    setMessage(`Something went wrong! ${error}`);
-  };
-
-  const onCreateWalletSuccess = (paperUser: PaperUser) => {
-    setWalletAddress(paperUser.walletAddress);
-    setEmailAddress(paperUser.emailAddress);
-    setShowPayWithCard(true);
-  };
-
-  const onCreateWalletError = (error: PaperSDKError) => {
-    setMessage(`Your email could not be verified.`);
-  };
-
-  return (
-    <>
-      <input
-        placeholder="Email address"
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-          setEmailAddress(e.target.value);
-        }}
-      />
-      <CreateWallet
-        emailAddress={emailAddress}
-        onSuccess={onCreateWalletSuccess}
-        onError={onCreateWalletError}
-      />
-
-      <PayWithCard
-        checkoutId={"49cfc793-9a16-4e77-8afd-d80de6e9ccd4"}
-        recipientWalletAddress={"0x927a5D4d0e720379ADb53a895f8755D327faF0F5"}
-        emailAddress={"winston@paper.xyz"}
-        onTransferSuccess={onPayWithCardTransferSuccess}
-        onError={onPayWithCardError}
-      />
-      {message}
-    </>
-  );
-}
-
-export function PaperCheckoutTest() {
-  return (
-    <PaperCheckout
-      checkoutId="70e08b7f-c528-46af-8b17-76b0e0ade641"
-      appName="Hello World"
-      display={PaperCheckoutDisplay.EMBED}
-      emailAddress={"winston@paper.xyz"}
-      recipientWalletAddress={"0x450D82Ed59f9238FB7fa37E006B32b2c51c37596"}
-      onPaymentSuccess={(result: PaymentSuccessResult) => {
-        console.log("result", result);
-      }}
-      onTransferSuccess={(transferSuccess: TransferSuccessResult) => {
-        console.log("transferSuccess", transferSuccess);
-      }}
-    />
   );
 }
