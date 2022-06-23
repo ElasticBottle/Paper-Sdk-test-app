@@ -1,10 +1,10 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import React from "react";
 import { FaTwitterSquare } from "react-icons/fa";
 import { HiOutlineGlobeAlt } from "react-icons/hi";
 import { IoLogoDiscord } from "react-icons/io5";
+import { PaperCheckoutExample } from "../components/PaperCheckoutExample";
 import { PaperLogo } from "../components/PaperLogo";
 import { PayWithCardExample } from "../components/PayWithCardExample";
 import NFTPreview from "../public/android-chrome-256x256.png";
@@ -21,8 +21,8 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex flex-1 w-full text-gray-800">
-        <div className="grid w-full h-full max-w-3xl grid-cols-1 px-3 py-4 mx-auto auto-rows-auto md:grid-cols-2 md:px-6 md:py-10 lg:max-w-5xl">
+      <main className="flex w-full flex-1 text-gray-800">
+        <div className="mx-auto grid h-full w-full max-w-3xl auto-rows-auto grid-cols-1 px-3 py-4 md:grid-cols-2 md:px-6 md:py-10 lg:max-w-5xl">
           <InfoComponent />
           <MintComponent />
         </div>
@@ -45,8 +45,8 @@ export default Home;
 
 function MintComponent() {
   return (
-    <div className="flex flex-col items-center order-1 pb-4 space-y-5 md:order-2">
-      <div className="items-center aspect-square w-52 rounded-xl">
+    <div className="order-1 flex flex-col items-center space-y-5 pb-4 md:order-2">
+      <div className="aspect-square w-52 items-center rounded-xl">
         <Image src={NFTPreview} alt="NFT preview" layout="responsive" />
       </div>
 
@@ -59,15 +59,15 @@ function InfoComponent() {
   const iconSize = 22;
 
   return (
-    <div className="flex flex-col items-center order-2 w-full h-full space-y-2 md:order-1 md:items-start">
+    <div className="order-2 flex h-full w-full flex-col items-center space-y-2 md:order-1 md:items-start">
       <h1 className={"pb-2 text-3xl font-bold md:pb-4 md:text-5xl lg:text-6xl"}>
         Paper Explorers
       </h1>
       <div className="flex space-x-2">
-        <div className="block px-2 py-1 border-2 border-gray-700 rounded-lg whitespace-nowrap">
+        <div className="block whitespace-nowrap rounded-lg border-2 border-gray-700 px-2 py-1">
           Total Items <span className="font-bold">10,000</span>
         </div>
-        <div className="block px-2 py-1 border-2 border-gray-700 rounded-lg whitespace-nowrap">
+        <div className="block whitespace-nowrap rounded-lg border-2 border-gray-700 px-2 py-1">
           Price <span className="font-bold">0.15 Sol</span>
         </div>
       </div>
@@ -99,7 +99,7 @@ function InfoComponent() {
         </a>
         !
       </p>
-      {/* <PaperCheckoutTest /> */}
+      <PaperCheckoutExample />
     </div>
   );
 }

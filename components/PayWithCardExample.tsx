@@ -1,10 +1,11 @@
 import {
   PaperSDKError,
-  PaperSDKProvider,
   PayWithCard,
+  PayWithCrypto,
+  PayWithCryptoChildrenProps,
   TransferSuccessResult,
 } from "@paperxyz/react-client-sdk";
-import React, { useState } from "react";
+import { useState } from "react";
 
 export function PayWithCardExample() {
   const [message, setMessage] = useState<string>("");
@@ -27,24 +28,24 @@ export function PayWithCardExample() {
         onTransferSuccess={onPayWithCardTransferSuccess}
         onError={onPayWithCardError}
       />
-      {/* <PayWithCrypto /> */}
-      {/* <PayWithCrypto>
-          <div className="px-3 py-2 text-lg font-bold transition-all bg-orange-800 rounded-xl hover:scale-105 hover:bg-orange-900 active:bg-orange-800">
-            Mint with Eth
-          </div>
-        </PayWithCrypto>
-        <PayWithCrypto>
-          {({ openModal }: PayWithCryptoChildrenProps) => {
-            return (
-              <button
-                onClick={openModal}
-                className="px-3 py-2 text-lg font-bold transition-all bg-purple-800 rounded-xl hover:scale-105 hover:bg-purple-900 active:bg-purple-800"
-              >
-                Mint with Eth
-              </button>
-            );
-          }}
-        </PayWithCrypto> */}
+      <PayWithCrypto />
+      <PayWithCrypto>
+        <div className="rounded-xl bg-orange-800 px-3 py-2 text-lg font-bold transition-all hover:scale-105 hover:bg-orange-900 active:bg-orange-800">
+          Mint with Eth
+        </div>
+      </PayWithCrypto>
+      <PayWithCrypto>
+        {({ openModal }: PayWithCryptoChildrenProps) => {
+          return (
+            <button
+              onClick={openModal}
+              className="rounded-xl bg-purple-800 px-3 py-2 text-lg font-bold transition-all hover:scale-105 hover:bg-purple-900 active:bg-purple-800"
+            >
+              Mint with Eth
+            </button>
+          );
+        }}
+      </PayWithCrypto>
       {message}
     </>
   );

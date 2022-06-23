@@ -5,7 +5,7 @@ import {
   TransferSuccessResult,
 } from "@paperxyz/react-client-sdk";
 
-export function PaperCheckoutTest() {
+export function PaperCheckoutExample() {
   return (
     <PaperCheckout
       checkoutId="70e08b7f-c528-46af-8b17-76b0e0ade641"
