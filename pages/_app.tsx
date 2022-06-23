@@ -5,7 +5,7 @@ import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <PaperSDKProvider chainName="Polygon">
+    <PaperSDKProvider chainName="Polygon" appName="Test app">
       <Component {...pageProps} />;
     </PaperSDKProvider>
   );
