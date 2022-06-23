@@ -28,13 +28,13 @@ export function PayWithCardExample() {
         onTransferSuccess={onPayWithCardTransferSuccess}
         onError={onPayWithCardError}
       />
-      <PayWithCrypto />
-      <PayWithCrypto>
+      <PayWithCrypto checkoutId={"70e08b7f-c528-46af-8b17-76b0e0ade641"} />
+      <PayWithCrypto checkoutId={"70e08b7f-c528-46af-8b17-76b0e0ade641"}>
         <div className="rounded-xl bg-orange-800 px-3 py-2 text-lg font-bold transition-all hover:scale-105 hover:bg-orange-900 active:bg-orange-800">
           Mint with Eth
         </div>
       </PayWithCrypto>
-      <PayWithCrypto>
+      <PayWithCrypto checkoutId={"70e08b7f-c528-46af-8b17-76b0e0ade641"}>
         {({ openModal }: PayWithCryptoChildrenProps) => {
           return (
             <button
