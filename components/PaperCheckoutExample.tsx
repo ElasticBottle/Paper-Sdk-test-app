@@ -8,11 +8,10 @@ import {
 export function PaperCheckoutExample() {
   return (
     <PaperCheckout
-      checkoutId="70e08b7f-c528-46af-8b17-76b0e0ade641"
+      checkoutId="40fcbf88-5d08-44e7-960e-2e6106aba999"
       appName="Hello World"
       display={PaperCheckoutDisplay.MODAL}
       emailAddress={"winston@paper.xyz"}
-      recipientWalletAddress={"0x450D82Ed59f9238FB7fa37E006B32b2c51c37596"}
       onPaymentSuccess={(result: PaymentSuccessResult) => {
         console.log("result", result);
       }}
