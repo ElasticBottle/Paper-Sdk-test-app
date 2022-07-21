@@ -4,6 +4,7 @@ import {
   PayWithCrypto,
   TransferSuccessResult,
 } from "@paperxyz/react-client-sdk";
+import { PayWithCryptoChildrenProps } from "@paperxyz/react-client-sdk/dist/components/PayWithCrypto/ViewPricingDetails";
 import { useState } from "react";
 
 export function PayWithCardExample() {
@@ -21,17 +22,68 @@ export function PayWithCardExample() {
   return (
     <>
       <PayWithCard
+        checkoutId={"24302f7d-6c20-4ebb-b0c8-0414ddc21e0a"}
+        recipientWalletAddress={"0x768e25b305aF92DC2a610ac9D7a3732D7D049573"}
+        quantity={2}
+        mintMethod={{
+          name: "claimTo",
+          args: {
+            _to: "$WALLET",
+            _quantity: "$QUANTITY",
+            _tokenId: 0,
+          },
+          payment: {
+            currency: "MATIC",
+            value: "0.0002",
+          },
+        }}
+        eligibilityMethod={{
+          name: "getClaimIneligibilityReason",
+          args: {
+            _recipient: "$WALLET",
+            _quantity: "1",
+            _tokenId: "0",
+          },
+        }}
+        emailAddress={"winston@paper.xyz"}
+        onTransferSuccess={onPayWithCardTransferSuccess}
+        onError={onPayWithCardError}
+      />
+      {/* <PayWithCard
         checkoutId={"54762a95-76e7-4fc9-83c6-11d9a2c3ebf8"}
         recipientWalletAddress={"0x927a5D4d0e720379ADb53a895f8755D327faF0F5"}
         emailAddress={"winston@paper.xyz"}
         onTransferSuccess={onPayWithCardTransferSuccess}
         onError={onPayWithCardError}
-      />
+      /> */}
       <PayWithCrypto
-        checkoutId={"54762a95-76e7-4fc9-83c6-11d9a2c3ebf8"}
+        checkoutId={"60e7a3fc-d205-4ae7-8eaf-55fd2febec6d"}
         recipientWalletAddress="0x768e25b305aF92DC2a610ac9D7a3732D7D049573"
-        onSuccess={(code) => {
-          console.log("transaction success, txHash: ", code.hash);
+        mintMethod={{
+          name: "claimTo",
+          args: {
+            _to: "$WALLET",
+            _quantity: "$QUANTITY",
+            _tokenId: 0,
+          },
+          payment: {
+            currency: "MATIC",
+            value: "3 ",
+          },
+        }}
+        eligibilityMethod={{
+          name: "getClaimIneligibilityReason",
+          args: {
+            _recipient: "$WALLET",
+            _quantity: "1",
+            _tokenId: "0",
+          },
+        }}
+        onSuccess={({ transactionResponse }) => {
+          console.log(
+            "transaction success, txHash: ",
+            transactionResponse.hash
+          );
         }}
         onError={(error) => {
           console.log("error.code", error.code);
@@ -45,7 +97,7 @@ export function PayWithCardExample() {
           Mint with Eth
         </div>
       </PayWithCrypto>
-      {/* <PayWithCrypto checkoutId={"bc4a5443-6a5e-4c00-928e-80582601b1a7"}>
+      <PayWithCrypto checkoutId={"bc4a5443-6a5e-4c00-928e-80582601b1a7"}>
         {({ openModal }: PayWithCryptoChildrenProps) => {
           return (
             <button
@@ -56,7 +108,7 @@ export function PayWithCardExample() {
             </button>
           );
         }}
-      </PayWithCrypto> */}
+      </PayWithCrypto>
       {message}
     </>
   );
