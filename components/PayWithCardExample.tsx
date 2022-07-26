@@ -22,7 +22,7 @@ export function PayWithCardExample() {
   return (
     <>
       <PayWithCard
-        checkoutId={"24302f7d-6c20-4ebb-b0c8-0414ddc21e0a"}
+        checkoutId={"5079ac2b-ff06-45ca-ad9f-9b008be207f4"}
         recipientWalletAddress={"0x768e25b305aF92DC2a610ac9D7a3732D7D049573"}
         quantity={2}
         mintMethod={{
@@ -30,19 +30,19 @@ export function PayWithCardExample() {
           args: {
             _to: "$WALLET",
             _quantity: "$QUANTITY",
-            _tokenId: 0,
+            _tokenId: 1,
           },
           payment: {
-            currency: "MATIC",
-            value: "0.0002",
+            currency: "USDC",
+            value: "0.5  * $QUANTITY",
           },
         }}
         eligibilityMethod={{
           name: "getClaimIneligibilityReason",
           args: {
             _recipient: "$WALLET",
-            _quantity: "1",
-            _tokenId: "0",
+            _quantity: "$QUANTITY",
+            _tokenId: 1,
           },
         }}
         emailAddress={"winston@paper.xyz"}
@@ -57,7 +57,7 @@ export function PayWithCardExample() {
         onError={onPayWithCardError}
       /> */}
       <PayWithCrypto
-        checkoutId={"60e7a3fc-d205-4ae7-8eaf-55fd2febec6d"}
+        checkoutId={"5079ac2b-ff06-45ca-ad9f-9b008be207f4"}
         recipientWalletAddress="0x768e25b305aF92DC2a610ac9D7a3732D7D049573"
         mintMethod={{
           name: "claimTo",
