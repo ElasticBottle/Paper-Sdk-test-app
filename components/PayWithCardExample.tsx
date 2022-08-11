@@ -22,7 +22,7 @@ export function PayWithCardExample() {
     <>
       <PayWithCard
         // checkoutId={"5079ac2b-ff06-45ca-ad9f-9b008be207f4"}
-        checkoutId={"88d5242f-cca0-4fea-84c2-8cb941d65b37"}
+        checkoutId={"c13c5083-0bfa-44f0-be54-87079d9df264"}
         recipientWalletAddress={"0x768e25b305aF92DC2a610ac9D7a3732D7D049573"}
         quantity={2}
         mintMethod={{
@@ -30,11 +30,11 @@ export function PayWithCardExample() {
           args: {
             _to: "$WALLET",
             _quantity: "$QUANTITY",
-            _tokenId: 1,
+            _tokenId: 0,
           },
           payment: {
-            currency: "USDC",
-            value: "0.5  * $QUANTITY",
+            currency: "MATIC",
+            value: "0.001  * $QUANTITY",
           },
         }}
         eligibilityMethod={{
@@ -57,8 +57,7 @@ export function PayWithCardExample() {
         onError={onPayWithCardError}
       /> */}
       <PayWithCrypto
-        // checkoutId={"5079ac2b-ff06-45ca-ad9f-9b008be207f4"}
-        checkoutId={"88d5242f-cca0-4fea-84c2-8cb941d65b37"}
+        checkoutId={"c13c5083-0bfa-44f0-be54-87079d9df264"}
         recipientWalletAddress="0x768e25b305aF92DC2a610ac9D7a3732D7D049573"
         mintMethod={{
           name: "claimTo",
@@ -72,7 +71,7 @@ export function PayWithCardExample() {
             value: "0.001 * $QUANTITY",
           },
         }}
-        showConnectWalletOptions={false}
+        showConnectWalletOptions={true}
         eligibilityMethod={{
           name: "getClaimIneligibilityReason",
           args: {
