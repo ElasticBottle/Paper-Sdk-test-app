@@ -16,7 +16,7 @@ import {
 export function PaperCheckoutExample() {
   return (
     <PaperCheckout
-      checkoutId="0795f5a0-e01b-4a15-bb1f-0b2ab336261b"
+      checkoutId="e015fa00-0d6a-4f40-99b1-656ef6b5ccae"
       appName="Hello World"
       display={PaperCheckoutDisplay.MODAL}
       recipientWalletAddress="0x768e25b305aF92DC2a610ac9D7a3732D7D049573"
@@ -31,7 +31,7 @@ export function PaperCheckoutExample() {
         },
         payment: {
           currency: "MATIC",
-          value: "4",
+          value: "0.0001 ",
         },
         callOptions: {
           gasOptions: "medium",

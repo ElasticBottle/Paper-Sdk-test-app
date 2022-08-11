@@ -4,7 +4,6 @@ import {
   PayWithCrypto,
   TransferSuccessResult,
 } from "@paperxyz/react-client-sdk";
-import { PayWithCryptoChildrenProps } from "@paperxyz/react-client-sdk/dist/components/PayWithCrypto/ViewPricingDetails";
 import { useState } from "react";
 
 export function PayWithCardExample() {
@@ -22,7 +21,8 @@ export function PayWithCardExample() {
   return (
     <>
       <PayWithCard
-        checkoutId={"5079ac2b-ff06-45ca-ad9f-9b008be207f4"}
+        // checkoutId={"5079ac2b-ff06-45ca-ad9f-9b008be207f4"}
+        checkoutId={"88d5242f-cca0-4fea-84c2-8cb941d65b37"}
         recipientWalletAddress={"0x768e25b305aF92DC2a610ac9D7a3732D7D049573"}
         quantity={2}
         mintMethod={{
@@ -57,20 +57,22 @@ export function PayWithCardExample() {
         onError={onPayWithCardError}
       /> */}
       <PayWithCrypto
-        checkoutId={"5079ac2b-ff06-45ca-ad9f-9b008be207f4"}
+        // checkoutId={"5079ac2b-ff06-45ca-ad9f-9b008be207f4"}
+        checkoutId={"88d5242f-cca0-4fea-84c2-8cb941d65b37"}
         recipientWalletAddress="0x768e25b305aF92DC2a610ac9D7a3732D7D049573"
         mintMethod={{
           name: "claimTo",
           args: {
             _to: "$WALLET",
             _quantity: "$QUANTITY",
-            _tokenId: 0,
+            _tokenId: 1,
           },
           payment: {
-            currency: "MATIC",
-            value: "3 ",
+            currency: "DERC20",
+            value: "0.001 * $QUANTITY",
           },
         }}
+        showConnectWalletOptions={false}
         eligibilityMethod={{
           name: "getClaimIneligibilityReason",
           args: {
@@ -89,26 +91,7 @@ export function PayWithCardExample() {
           console.log("error.code", error.code);
         }}
       />
-      <PayWithCrypto
-        checkoutId={"54762a95-76e7-4fc9-83c6-11d9a2c3ebf8"}
-        recipientWalletAddress="0x768e25b305aF92DC2a610ac9D7a3732D7D049573"
-      >
-        <div className="rounded-xl bg-orange-800 px-3 py-2 text-lg font-bold transition-all hover:scale-105 hover:bg-orange-900 active:bg-orange-800">
-          Mint with Eth
-        </div>
-      </PayWithCrypto>
-      <PayWithCrypto checkoutId={"bc4a5443-6a5e-4c00-928e-80582601b1a7"}>
-        {({ openModal }: PayWithCryptoChildrenProps) => {
-          return (
-            <button
-              onClick={openModal}
-              className="rounded-xl bg-purple-800 px-3 py-2 text-lg font-bold transition-all hover:scale-105 hover:bg-purple-900 active:bg-purple-800"
-            >
-              Mint with Eth
-            </button>
-          );
-        }}
-      </PayWithCrypto>
+
       {message}
     </>
   );
