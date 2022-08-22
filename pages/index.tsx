@@ -1,9 +1,11 @@
+import { CreateWallet } from "@paperxyz/react-client-sdk";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import { FaTwitterSquare } from "react-icons/fa";
 import { HiOutlineGlobeAlt } from "react-icons/hi";
 import { IoLogoDiscord } from "react-icons/io5";
+import { LoginWithPaperExample } from "../components/LoginWithPaperExample";
 import { PaperCheckoutExample } from "../components/PaperCheckoutExample";
 import { PaperLogo } from "../components/PaperLogo";
 import { PayWithCardExample } from "../components/PayWithCardExample";
@@ -49,7 +51,7 @@ function MintComponent() {
       <div className="aspect-square w-52 items-center rounded-xl">
         <Image src={NFTPreview} alt="NFT preview" layout="responsive" />
       </div>
-
+      <LoginWithPaperExample />
       <PayWithCardExample />
     </div>
   );
@@ -100,6 +102,16 @@ function InfoComponent() {
         !
       </p>
       <PaperCheckoutExample />
+      <CreateWallet
+        emailAddress="winston@paper.xyz"
+        onSuccess={(user) => {
+          console.log("user", user);
+        }}
+        onEmailVerificationInitiated={() => {}}
+        onError={(error) => {
+          console.log("error", error);
+        }}
+      />
     </div>
   );
 }

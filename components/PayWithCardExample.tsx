@@ -2,16 +2,11 @@ import {
   PaperSDKError,
   PayWithCard,
   PayWithCrypto,
-  TransferSuccessResult,
 } from "@paperxyz/react-client-sdk";
 import { useState } from "react";
 
 export function PayWithCardExample() {
   const [message, setMessage] = useState<string>("");
-
-  const onPayWithCardTransferSuccess = (result: TransferSuccessResult) => {
-    setMessage(`Transaction succeeded!`);
-  };
 
   const onPayWithCardError = (error: PaperSDKError) => {
     console.log("error", error);
@@ -45,8 +40,10 @@ export function PayWithCardExample() {
             _tokenId: 1,
           },
         }}
+        onPaymentSuccess={({ id }) => {
+          setMessage(id);
+        }}
         emailAddress={"winston@paper.xyz"}
-        onTransferSuccess={onPayWithCardTransferSuccess}
         onError={onPayWithCardError}
       />
       {/* <PayWithCard
