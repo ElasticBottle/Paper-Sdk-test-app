@@ -35,7 +35,7 @@ export default async function handler(
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer 69e9e7b5-f4f6-4b26-b344-7a810ecb500c",
+        Authorization: "Bearer ${process.env.PAPER_API_KEY}",
       },
       body: JSON.stringify({
         userToken,
