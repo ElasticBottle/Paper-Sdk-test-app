@@ -21,7 +21,10 @@ export const LoginWithPaperExample = () => {
     console.log("userToken", userToken);
   };
   return (
-    <PaperSDKProvider clientId="e61231d4-3681-459c-82e9-a6a69cca0098">
+    <PaperSDKProvider
+      clientId="e61231d4-3681-459c-82e9-a6a69cca0098"
+      chainName="Polygon"
+    >
       <VerifyOwnershipWithPaper onSuccess={onSuccessLogin} />
     </PaperSDKProvider>
   );

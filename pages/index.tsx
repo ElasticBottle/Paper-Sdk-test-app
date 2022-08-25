@@ -107,10 +107,13 @@ function InfoComponent() {
         onSuccess={(user) => {
           console.log("user", user);
         }}
-        onEmailVerificationInitiated={() => {}}
+        onEmailVerificationInitiated={() => {
+          console.log("onEmailVerificationInitiated callback fired");
+        }}
         onError={(error) => {
           console.log("error", error);
         }}
+        redirectUrl="https://paper.xyz/dashboard"
       />
     </div>
   );
