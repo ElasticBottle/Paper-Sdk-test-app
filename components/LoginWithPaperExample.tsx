@@ -1,7 +1,4 @@
-import {
-  PaperSDKProvider,
-  VerifyOwnershipWithPaper,
-} from "@paperxyz/react-client-sdk";
+import { LoginWithPaper, PaperSDKProvider } from "@paperxyz/react-client-sdk";
 
 export const LoginWithPaperExample = () => {
   const onSuccessLogin = async (code: string) => {
@@ -25,7 +22,7 @@ export const LoginWithPaperExample = () => {
       clientId="e61231d4-3681-459c-82e9-a6a69cca0098"
       chainName="Polygon"
     >
-      <VerifyOwnershipWithPaper onSuccess={onSuccessLogin} />
+      <LoginWithPaper onSuccess={onSuccessLogin} className="flex" />
     </PaperSDKProvider>
   );
 };

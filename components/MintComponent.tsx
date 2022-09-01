@@ -1,5 +1,3 @@
-import "@paperxyz/react-client-sdk/dist/index.css";
-
 import { CreateWallet, PaperSDKProvider } from "@paperxyz/react-client-sdk";
 import Image from "next/image";
 import NFTPreview from "../public/android-chrome-256x256.png";
@@ -28,7 +26,18 @@ export function MintComponent() {
             console.log("error", error);
           }}
           redirectUrl="https://paper.xyz/dashboard"
-        />
+        >
+          {({ createWallet }) => {
+            return (
+              <button
+                className="bg-blue-500 p-5"
+                onClick={createWallet("mafdace@gmail.com")}
+              >
+                testing
+              </button>
+            );
+          }}
+        </CreateWallet>
         <PayWithCardExample />
       </PaperSDKProvider>
     </div>
