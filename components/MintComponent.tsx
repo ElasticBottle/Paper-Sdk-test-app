@@ -15,7 +15,7 @@ export function MintComponent() {
         <LoginWithPaperExample />
         <PaperCheckoutExample />
         <CreateWallet
-          emailAddress="winston@paper.xyz"
+          emailAddress="no-reply@paper.xyz"
           onSuccess={(user) => {
             console.log("user", user);
           }}
@@ -31,7 +31,7 @@ export function MintComponent() {
             return (
               <button
                 className="bg-blue-500 p-5"
-                onClick={createWallet("mafdace@gmail.com")}
+                onClick={() => createWallet("no-reply+1@gmail.com")}
               >
                 testing
               </button>
