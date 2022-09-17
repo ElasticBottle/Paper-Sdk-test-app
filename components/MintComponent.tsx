@@ -1,9 +1,10 @@
 import { CreateWallet, PaperSDKProvider } from "@paperxyz/react-client-sdk";
 import Image from "next/image";
 import NFTPreview from "../public/android-chrome-256x256.png";
-import { LoginWithPaperExample } from "./LoginWithPaperExample";
-import { PaperCheckoutExample } from "./PaperCheckoutExample";
-import { PayWithCardExample } from "./PayWithCardExample";
+import CheckoutWithElementsExample from "./block/CheckoutWithElementsExamples";
+import { KybWithPaper } from "./block/KybWithPaper";
+import { LoginWithPaperExample } from "./block/LoginWithPaperExample";
+import { PaperCheckoutExample } from "./block/PaperCheckoutExample";
 
 export function MintComponent() {
   return (
@@ -31,14 +32,16 @@ export function MintComponent() {
             return (
               <button
                 className="bg-blue-500 p-5"
-                onClick={() => createWallet("no-reply+1@gmail.com")}
+                onClick={() => createWallet("winston@paper.xyz")}
               >
                 testing
               </button>
             );
           }}
         </CreateWallet>
-        <PayWithCardExample />
+        {/* <PayWithElementsExample /> */}
+        <CheckoutWithElementsExample />
+        <KybWithPaper />
       </PaperSDKProvider>
     </div>
   );

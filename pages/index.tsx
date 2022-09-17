@@ -3,10 +3,8 @@ import Head from "next/head";
 import { FaTwitterSquare } from "react-icons/fa";
 import { HiOutlineGlobeAlt } from "react-icons/hi";
 import { IoLogoDiscord } from "react-icons/io5";
-import { KybWithPaper } from "../components/KybWithPaper";
+import { PaperLogo } from "../components/design/PaperLogo";
 import { MintComponent } from "../components/MintComponent";
-import { PaperCheckoutWithEthNative } from "../components/PaperCheckoutWithEthNative";
-import { PaperLogo } from "../components/PaperLogo";
 
 const Home: NextPage = () => {
   return (
@@ -86,8 +84,7 @@ function InfoComponent() {
         </a>
         !
       </p>
-      <PaperCheckoutWithEthNative />
-      <KybWithPaper />
+      {/* <PaperCheckoutWithEthNative /> */}
     </div>
   );
 }

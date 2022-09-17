@@ -22,7 +22,11 @@ export const LoginWithPaperExample = () => {
       clientId="e61231d4-3681-459c-82e9-a6a69cca0098"
       chainName="Polygon"
     >
-      <LoginWithPaper onSuccess={onSuccessLogin} className="flex" />
+      <LoginWithPaper
+        onSuccess={onSuccessLogin}
+        className="flex"
+        redirectUrl="https://paper.xyz"
+      />
     </PaperSDKProvider>
   );
 };

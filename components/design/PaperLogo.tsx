@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Logo from "../public/icons/paper-logo-icon.svg";
-import LogoText from "../public/icons/paper-text-light.svg";
+import Logo from "../../public/icons/paper-logo-icon.svg";
+import LogoText from "../../public/icons/paper-text-light.svg";
 
 export function PaperLogo() {
   return (

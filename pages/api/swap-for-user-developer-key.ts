@@ -12,7 +12,7 @@ export default async function handler(
   console.log("authToken", authToken);
 
   const resp = await fetch(
-    "https://paper.xyz/api/2022-08-12/platform/get-developer-key",
+    "http://localhost:3000/api/2022-08-12/platform/get-developer-key",
     {
       method: "POST",
       headers: {

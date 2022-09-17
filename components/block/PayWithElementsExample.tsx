@@ -5,7 +5,11 @@ import {
 } from "@paperxyz/react-client-sdk";
 import { useState } from "react";
 
-export function PayWithCardExample() {
+/**
+ * @deprecated
+ * @returns
+ */
+export function PayWithElementsExample() {
   const [message, setMessage] = useState<string>("");
 
   const onPayWithCardError = (error: PaperSDKError) => {
