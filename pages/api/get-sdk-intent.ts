@@ -14,6 +14,9 @@ export default async function handler(
       },
       body: JSON.stringify({
         contractId: "e015fa00-0d6a-4f40-99b1-656ef6b5ccae",
+        walletAddress: "0xb3E9C57fB983491416a0C77b07629C0991c3FD59",
+        email: "no-reply@paper.xyz",
+        quantity: 1,
         mintMethod: {
           name: "claimTo",
           args: {
