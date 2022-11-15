@@ -24,9 +24,16 @@ export const LoginWithPaperExample = () => {
     >
       <LoginWithPaper
         onSuccess={onSuccessLogin}
+        onError={(error) => {
+          console.log("error.code", error.code);
+        }}
         className="flex"
         redirectUrl="https://paper.xyz"
-      />
+      >
+        {({ onClick }) => {
+          return <button onClick={onClick}>login with paper test</button>;
+        }}
+      </LoginWithPaper>
     </PaperSDKProvider>
   );
 };

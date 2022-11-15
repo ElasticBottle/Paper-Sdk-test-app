@@ -4,7 +4,7 @@ import { FaTwitterSquare } from "react-icons/fa";
 import { HiOutlineGlobeAlt } from "react-icons/hi";
 import { IoLogoDiscord } from "react-icons/io5";
 import { PaperLogo } from "../components/design/PaperLogo";
-import { MintComponent } from "../components/MintComponent";
+import { EmbeddedWalletComponent } from "../components/EmbeddedWalletComponent";
 
 const Home: NextPage = () => {
   return (
@@ -21,7 +21,8 @@ const Home: NextPage = () => {
       <main className="flex w-full flex-1 text-gray-800">
         <div className="mx-auto grid h-full w-full max-w-3xl auto-rows-auto grid-cols-1 px-3 py-4 md:grid-cols-2 md:px-6 md:py-10 lg:max-w-5xl">
           <InfoComponent />
-          <MintComponent />
+          <EmbeddedWalletComponent />
+          {/* <MintComponent /> */}
         </div>
       </main>
       <footer className={"flex w-full justify-center bg-gray-200 py-5"}>

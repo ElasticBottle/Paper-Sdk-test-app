@@ -1,8 +1,7 @@
-import { CreateWallet, PaperSDKProvider } from "@paperxyz/react-client-sdk";
+import { PaperSDKProvider } from "@paperxyz/react-client-sdk";
 import Image from "next/image";
 import NFTPreview from "../public/android-chrome-256x256.png";
 import CheckoutWithElementsExample from "./block/CheckoutWithElementsExamples";
-import { KybWithPaper } from "./block/KybWithPaper";
 import { LoginWithPaperExample } from "./block/LoginWithPaperExample";
 import { PaperCheckoutExample } from "./block/PaperCheckoutExample";
 
@@ -15,7 +14,7 @@ export function MintComponent() {
       <PaperSDKProvider chainName="Mumbai" appName={"Paper Test App"}>
         <LoginWithPaperExample />
         <PaperCheckoutExample />
-        <CreateWallet
+        {/* <CreateWallet
           emailAddress="no-reply@paper.xyz"
           onSuccess={(user) => {
             console.log("user", user);
@@ -38,10 +37,10 @@ export function MintComponent() {
               </button>
             );
           }}
-        </CreateWallet>
+        </CreateWallet> */}
         {/* <PayWithElementsExample /> */}
         <CheckoutWithElementsExample />
-        <KybWithPaper />
+        {/* <KybWithPaper /> */}
       </PaperSDKProvider>
     </div>
   );
