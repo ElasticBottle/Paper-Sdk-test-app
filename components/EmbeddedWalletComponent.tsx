@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 export const EmbeddedWalletComponent = () => {
   const [PaperWalletSdk, setPaperWalletSdk] = useState<PaperClient>();
   const [pwd, setPwd] = useState("");
+
   useEffect(() => {
     const setUp = async () => {
       const Paper = new PaperClient({
@@ -91,6 +92,20 @@ export const EmbeddedWalletComponent = () => {
       }
     }
   };
+  const getNftHoldings = async () => {
+    if (PaperWalletSdk) {
+      try {
+        const nfts = await PaperWalletSdk.User.walletHoldings.listNfts({
+          chain: "Mumbai",
+          limit: 10,
+          offset: 0,
+        });
+        console.log("nfts", nfts);
+      } catch (e) {
+        console.error(`something went wrong sending gasless transaction ${e}`);
+      }
+    }
+  };
 
   return (
     <div className="flex flex-col">
@@ -138,6 +153,12 @@ export const EmbeddedWalletComponent = () => {
         className="m-2 rounded-xl bg-orange-600 px-4 py-2 hover:bg-orange-700 active:bg-orange-800"
       >
         call contract gasless
+      </button>
+      <button
+        onClick={getNftHoldings}
+        className="m-2 rounded-xl bg-orange-600 px-4 py-2 hover:bg-orange-700 active:bg-orange-800"
+      >
+        Get Nft Holdings
       </button>
     </div>
   );
