@@ -72,12 +72,12 @@ export const EmbeddedWalletComponent = () => {
     if (PaperWalletSdk) {
       console.log(
         "await PaperWalletSdk.User.details.walletAddress",
-        await PaperWalletSdk.User.details.walletAddress
+        await PaperWalletSdk.User.details.getWalletAddress()
       );
       const params = {
         contractAddress: "0xb2369209b4eb1e76a43fAd914B1d29f6508c8aae",
         method: {
-          args: [await PaperWalletSdk.User.details.walletAddress, 1, 0],
+          args: [await PaperWalletSdk.User.details.getWalletAddress(), 1, 0],
           stub: "function claimTo(address _to, uint256 _tokeIt, uint256 _quantity) external" as const,
         },
       };
